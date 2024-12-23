@@ -1,0 +1,76 @@
+﻿Name : Vinay Reddy
+vinayreddy9321@gmail.com
+
+
+Week 1 :Text Emotion Recognition Model 
+
+
+Introduction : 
+This project successfully implemented an emotion recognition pipeline, demonstrating the use of NLP techniques and machine learning models to analyze and classify emotions from textual data. Logistic Regression emerged as the best-performing model, achieving an accuracy of 82.9%.
+- trained an emotion recognition model and tested it with multiple algorithms, achieving notable results, especially with Logistic Regression and Random Forest.
+
+
+Q & A : 
+1. Why did you choose this dataset for the task?
+   * The dataset is labeled with diverse emotion classes such as joy, sadness, and anger, making it inherently suitable for emotion detection.
+   * It includes real-world conversational text, allowing the model to generalize to practical use cases.
+2. How did you ensure the dataset was representative of all emotion classes?
+   * The dataset's class distribution was analyzed during exploratory data analysis (EDA).
+   * Though there were class imbalances (e.g., more examples of "joy" and "sadness"), techniques like oversampling and weighted loss functions were considered to mitigate bias.
+3. Did you encounter missing, irrelevant, or noisy data?
+   * No Missing Data but  some texts contained noise such as typos, repetitive punctuations, and irrelevant characters.
+   * Noise was handled by:
+      * Lowercasing all text.
+      * Removing punctuations, numbers, and extra spaces.
+      * Using regular expressions for cleaning patterns.
+4. What key patterns or insights did you observe during EDA?
+   * Text length varied by emotion. For example, "joy" tended to have shorter text, while "sadness" featured longer narratives.
+   * Common words like "feel," "happy," and "alone" aligned with their respective emotions, highlighting the role of sentiment-driven words in distinguishing classes.
+5. What preprocessing steps did you take? Why were they necessary?
+   * Steps:
+      * Tokenization.
+      * Removal of stopwords 
+      * Stemming/Lemmatization to unify word forms (e.g., "running" → "run").
+   * Importance:
+      * Reduces vocabulary size for computational efficiency.
+      * Focuses on core semantic elements in text.
+6. How did you handle emojis, abbreviations, or slang?
+   * Emojis were removed to simplify data processing, as their inclusion required a separate mapping of emoji meanings.
+   * Common abbreviations/slang were not specifically expanded since they were minimally present in the dataset.
+7. Did you perform transformations on labels? Why?
+   * Labels (emotion categories) were encoded numerically using LabelEncoder for compatibility with machine learning models that expect numerical input.
+8. If elements were removed (e.g., stopwords), how did you decide?
+   * A custom stopword list was chosen, excluding words that could convey emotional content like "alone" or "happy."
+9. How did you convert the text into a format the model could process? Why?
+   * Used TF-IDF Vectorization:
+      * Captures word importance relative to the document.
+      * Balances frequency and specificity.
+   * Chosen because it worked well with the classification models without requiring deep learning.
+10. Challenges in representing text numerically and their resolution?
+   * High dimensionality in the TF-IDF matrix increased memory usage.
+   * Dimensionality reduction was considered but avoided since sparsity maintained important features.
+11. Trade-offs in feature selection/representation?
+   * Chose simplicity (TF-IDF) over advanced methods (e.g., word embeddings) for efficiency, as the task had a clear goal of multi-class classification and simpler text content.
+12. How did you determine the split between training and testing data?
+   * A 70/30 train-test split was used to ensure enough data for training while keeping ample data for unbiased evaluation.
+13. Steps for comparing models?
+   * Models were trained on identical preprocessed datasets and compared using accuracy, precision, recall, and F1-score. Logistic Regression and Random Forest performed the best.
+14. Challenges during training?
+   * Convergence warnings with Logistic Regression due to insufficient iterations; solved by increasing max_iter.
+   * Overfitting in Random Forest addressed by limiting tree depth and using fewer features.
+15. How did you decide hyperparameters?
+   * Initial settings were chosen based on defaults, then fine-tuned using grid search. For Logistic Regression, C (regularization strength) and solver settings were adjusted for optimal performance.
+16. What evaluation metrics did you use?
+   * Used accuracy, precision, recall, and F1-score.
+      * Accuracy gives a general performance overview.
+      * Precision/recall ensures minority classes are not overlooked.
+      * F1-score balances trade-offs between precision and recall.
+17. Interpreting and addressing misclassifications?
+   * Misclassifications often involved subtle emotions (e.g., joy confused with love).
+   * Improvements included analyzing feature importance and adjusting stopword lists to retain meaningful terms.
+18. Ensuring generalization to unseen data?
+   * Employed cross-validation during training and evaluated the model on a holdout test set.
+19. Patterns in errors?
+   * Misclassified "anger" texts often contained neutral terms, indicating insufficient emotional cues.
+   * Potential future step: incorporating contextual word embeddings 
+Further Steps for Advanced Emotion Recognition Model we can use state of art models , pretrained BERT which results in best .
